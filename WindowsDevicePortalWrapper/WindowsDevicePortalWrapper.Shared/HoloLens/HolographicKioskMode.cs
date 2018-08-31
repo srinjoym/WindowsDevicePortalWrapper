@@ -5,6 +5,7 @@
 
 using System;
 using System.Runtime.Serialization;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Microsoft.Tools.WindowsDevicePortal
@@ -64,14 +65,16 @@ namespace Microsoft.Tools.WindowsDevicePortal
                 throw new NotSupportedException("This method is only supported on HoloLens.");
             }
 
-            string payload = string.Format(
-                "kioskModeEnabled={0}&startupApp={1}",
-                kioskModeEnabled.ToString().ToLower(),
-                startupAppPackageName);
+            StringBuilder payload = new StringBuilder("kioskModeEnabled=" + kioskModeEnabled.ToString().ToLower());
+            if(!string.IsNullOrWhiteSpace(startupAppPackageName))
+            {
+                payload.Append("&startupApp=");
+                payload.Append(startupAppPackageName);
+            }
 
             await this.PostAsync(
                 HolographicKioskModeSettingsApi,
-                payload);
+                payload.ToString());
         }
 
         #region Data contract
