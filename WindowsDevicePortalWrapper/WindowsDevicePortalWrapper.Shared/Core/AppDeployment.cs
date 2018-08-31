@@ -339,6 +339,14 @@ namespace Microsoft.Tools.WindowsDevicePortal
             public int PackageOrigin { get; private set; }
 
             /// <summary>
+            /// Gets if the app can be launched by the user from the app list
+            /// Default     = 0 - App is in the app list
+            /// None        = 1 - App is not in the app list
+            /// </summary>
+            [DataMember(Name = "AppListEntry")]
+            public int AppListEntry { get; private set; }
+
+            /// <summary>
             /// Helper method to determine if the app was sideloaded and therefore can be used with e.g. GetFolderContentsAsync
             /// </summary>
             /// <returns> True if the package is sideloaded. </returns>

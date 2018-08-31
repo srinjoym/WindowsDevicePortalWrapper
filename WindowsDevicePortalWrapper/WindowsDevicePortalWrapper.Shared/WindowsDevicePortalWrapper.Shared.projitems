@@ -30,6 +30,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Events\ConnectionStatus.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\WebSocketMessageReceivedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Exceptions\DevicePortalException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HoloLens\HolographicKioskMode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HoloLens\HolographicOs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HoloLens\HolographicPerception.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HoloLens\HolographicThermal.cs" />
