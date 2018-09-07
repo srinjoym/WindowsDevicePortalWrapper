@@ -38,6 +38,8 @@ namespace Microsoft.Tools.WindowsDevicePortal
             if (acceptUntrustedCerts)
             {
                 requestSettings.IgnorableServerCertificateErrors.Add(ChainValidationResult.Untrusted);
+                requestSettings.IgnorableServerCertificateErrors.Add(ChainValidationResult.Expired);
+                requestSettings.IgnorableServerCertificateErrors.Add(ChainValidationResult.InvalidName);
             }
 
             using (HttpClient client = new HttpClient(requestSettings))

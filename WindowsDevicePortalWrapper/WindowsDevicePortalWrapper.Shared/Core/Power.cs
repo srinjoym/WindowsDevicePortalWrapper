@@ -78,6 +78,28 @@ namespace Microsoft.Tools.WindowsDevicePortal
             return await this.GetAsync<PowerState>(PowerStateApi);
         }
 
+        /// <summary>
+        /// Sets the sleep settings for the device
+        /// </summary>
+        /// <param name="onBatterySeconds">Sleep after this many seconds of inactivity when on battery</param>
+        /// <param name="pluggedInSeconds">Sleep after this many seconds of inactivity when pluged in</param>
+        /// <returns></returns>
+        public async Task SetSleepSettings(int onBatterySeconds, int pluggedInSeconds)
+        {
+            if(onBatterySeconds < 0 || pluggedInSeconds < 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            string standbyIdle = PowerSchemeSubValueApi + "/SCHEME_CURRENT/SUB_SLEEP/STANDBYIDLE";
+            string videoIdle = PowerSchemeSubValueApi + "/SCHEME_CURRENT/SUB_VIDEO/VIDEOIDLE";
+            string payload = string.Format("ValueAC={0}&ValueDC={1}", pluggedInSeconds, onBatterySeconds);
+
+            await this.PostAsync(standbyIdle, payload);
+            await this.PostAsync(videoIdle, payload);
+            await this.PostAsync(ActivePowerSchemeApi, "scheme=SCHEME_CURRENT");
+        }
+
         #region Data contract
 
         /// <summary>
