@@ -11,7 +11,8 @@ using System.Threading.Tasks;
 namespace Microsoft.Tools.WindowsDevicePortal
 {
     /// <content>
-    /// Wrappers for Holographic OS methods
+    /// Wrappers for Holographic Kiosk Mode settings. Note that these are only
+    /// available on Enterprise SKUs of HoloLens
     /// </content>
     public partial class DevicePortal
     {
