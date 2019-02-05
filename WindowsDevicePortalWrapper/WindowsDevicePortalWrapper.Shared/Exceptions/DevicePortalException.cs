@@ -115,6 +115,11 @@ namespace Microsoft.Tools.WindowsDevicePortal
             string message = "",
             Exception innerException = null)
         {
+            if(string.IsNullOrEmpty(message))
+            {
+                message = responseMessage.StatusCode.ToString();
+            }
+
             DevicePortalException error = new DevicePortalException(
                                                     responseMessage.StatusCode,
                                                     responseMessage.ReasonPhrase,

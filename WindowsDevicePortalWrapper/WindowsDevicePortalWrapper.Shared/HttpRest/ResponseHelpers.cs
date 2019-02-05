@@ -54,8 +54,13 @@ namespace Microsoft.Tools.WindowsDevicePortal
                     }
                     catch (SerializationException)
                     {
+                        StreamReader read = new StreamReader(dataStream);
+                        string rawJsonString = read.ReadToEnd();
+
                         // Assert on serialization failure.
-                        Debug.Assert(false, "Serialization failure encountered. Check DataContract types for a possible mismatch between expectations and reality");
+                        Debug.WriteLine(
+                            "DevicePortalWrapper.ResponseHelper.ReadJsonStream: Serialization failure encountered. Check DataContract types for a possible mismatch between expectations and reality\r\n" +
+                            $"RawStream: {rawJsonString}");
                         throw;
                     }
 
