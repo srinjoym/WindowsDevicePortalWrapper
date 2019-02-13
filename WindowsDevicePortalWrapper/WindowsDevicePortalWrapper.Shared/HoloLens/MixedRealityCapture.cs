@@ -228,6 +228,7 @@ namespace Microsoft.Tools.WindowsDevicePortal
 
             MrcFileList mrcFileList = await this.GetAsync<MrcFileList>(MrcFileListApi);
 
+#if NO
             foreach (MrcFileInformation mfi in mrcFileList.Files)
             {
                 try 
@@ -238,6 +239,7 @@ namespace Microsoft.Tools.WindowsDevicePortal
                 {
                 }
             }
+#endif
 
             return mrcFileList;
         }
