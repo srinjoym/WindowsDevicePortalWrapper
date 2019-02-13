@@ -29,7 +29,7 @@ namespace Microsoft.Tools.WindowsDevicePortal
         /// <summary>
         /// API for sending text
         /// </summary>
-        public static readonly string HolographicSendTextApi = "api/holographic/kioskmode/settings";
+        public static readonly string HolographicSendTextApi = "api/holographic/input/keyboard/text";
 
         /// <summary>
         /// Sends a virtual key up or down to the device
@@ -58,9 +58,7 @@ namespace Microsoft.Tools.WindowsDevicePortal
                 throw new NotSupportedException("This method is only supported on HoloLens.");
             }
 
-            await this.PostAsync(
-                HolographicKioskModeSettingsApi,
-                "text=" + text);
+            await this.PostAsync(HolographicSendTextApi, "text=" + text);
         }
     }
 }
