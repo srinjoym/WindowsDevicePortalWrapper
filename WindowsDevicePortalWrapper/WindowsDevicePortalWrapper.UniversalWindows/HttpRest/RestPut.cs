@@ -35,35 +35,37 @@ namespace Microsoft.Tools.WindowsDevicePortal
         {
             IBuffer dataBuffer = null;
 
-            HttpBaseProtocolFilter httpFilter = new HttpBaseProtocolFilter();
-            httpFilter.AllowUI = false;
-
-            if (this.deviceConnection.Credentials != null)
+            using (var httpFilter = new HttpBaseProtocolFilter())
             {
-                httpFilter.ServerCredential = new PasswordCredential();
-                httpFilter.ServerCredential.UserName = this.deviceConnection.Credentials.UserName;
-                httpFilter.ServerCredential.Password = this.deviceConnection.Credentials.Password;
-            }
+                httpFilter.AllowUI = false;
 
-            using (HttpClient client = new HttpClient(httpFilter))
-            {
-                this.ApplyHttpHeaders(client, HttpMethods.Put);
-
-                // Send the request
-                using (HttpResponseMessage response = await client.PutAsync(uri, null))
+                if (this.deviceConnection.Credentials != null)
                 {
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        throw await DevicePortalException.CreateAsync(response);
-                    }
+                    httpFilter.ServerCredential = new PasswordCredential();
+                    httpFilter.ServerCredential.UserName = this.deviceConnection.Credentials.UserName;
+                    httpFilter.ServerCredential.Password = this.deviceConnection.Credentials.Password;
+                }
 
-                    this.RetrieveCsrfToken(response);
+                using (HttpClient client = new HttpClient(httpFilter))
+                {
+                    this.ApplyHttpHeaders(client, HttpMethods.Put);
 
-                    if (response.Content != null)
+                    // Send the request
+                    using (HttpResponseMessage response = await client.PutAsync(uri, body))
                     {
-                        using (IHttpContent messageContent = response.Content)
+                        if (!response.IsSuccessStatusCode)
                         {
-                            dataBuffer = await messageContent.ReadAsBufferAsync();
+                            throw await DevicePortalException.CreateAsync(response);
+                        }
+
+                        this.RetrieveCsrfToken(response);
+
+                        if (response.Content != null)
+                        {
+                            using (IHttpContent messageContent = response.Content)
+                            {
+                                dataBuffer = await messageContent.ReadAsBufferAsync();
+                            }
                         }
                     }
                 }
