@@ -127,9 +127,9 @@ namespace Microsoft.Tools.WindowsDevicePortal
                     installPhaseDescription);
 
                 var content = new HttpMultipartFileContent();
-                content.Add(packageFile.FullName);
-                content.AddRange(dependencyFileNames);
-                content.Add(certificateFileName);
+                await content.Add(packageFile.FullName);
+                await content.AddRange(dependencyFileNames);
+                await content.Add(certificateFileName);
                 await this.PostAsync(uri, content);
 
                 // Poll the status until complete.

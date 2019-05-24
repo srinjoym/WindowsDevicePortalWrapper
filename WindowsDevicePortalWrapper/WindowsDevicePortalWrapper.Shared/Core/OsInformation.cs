@@ -238,6 +238,10 @@ namespace Microsoft.Tools.WindowsDevicePortal
                                 platform = DevicePortalPlatforms.VirtualMachine;
                                 break;
 
+                            case "HoloLens 2":
+                                platform = DevicePortalPlatforms.HoloLens;
+                                break;
+
                             default:
                                 platform = (DevicePortalPlatforms)Enum.Parse(typeof(DevicePortalPlatforms), this.PlatformName);
                                 break;
