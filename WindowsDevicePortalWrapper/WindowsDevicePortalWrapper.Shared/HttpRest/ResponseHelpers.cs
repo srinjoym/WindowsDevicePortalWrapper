@@ -43,28 +43,30 @@ namespace Microsoft.Tools.WindowsDevicePortal
 
             using (dataStream)
             {
-                if ((dataStream != null) &&
-                    (dataStream.Length != 0))
+                if (dataStream != null)
                 {
-                    JsonFormatCheck<T>(dataStream);
-
-                    try
+                    using (MemoryStream outStream = new MemoryStream())
                     {
-                        response = serializer.ReadObject(dataStream);
-                    }
-                    catch (SerializationException)
-                    {
-                        StreamReader read = new StreamReader(dataStream);
-                        string rawJsonString = read.ReadToEnd();
+                        dataStream.CopyTo(outStream);
+                        if (outStream.Length != 0)
+                        {
+                            outStream.Seek(0, SeekOrigin.Begin);
+                            JsonFormatCheck<T>(outStream);
 
-                        // Assert on serialization failure.
-                        Debug.WriteLine(
-                            "DevicePortalWrapper.ResponseHelper.ReadJsonStream: Serialization failure encountered. Check DataContract types for a possible mismatch between expectations and reality\r\n" +
-                            $"RawStream: {rawJsonString}");
-                        throw;
-                    }
+                            try
+                            {
+                                response = serializer.ReadObject(outStream);
+                            }
+                            catch (SerializationException ex)
+                            {
+                                // Assert on serialization failure.
+                                Debug.Assert(false, "Serialization failure encountered. Check DataContract types for a possible mismatch between expectations and reality");
+                                throw;
+                            }
 
-                    data = (T)response;
+                            data = (T)response;
+                        }
+                    }
                 }
             }
 

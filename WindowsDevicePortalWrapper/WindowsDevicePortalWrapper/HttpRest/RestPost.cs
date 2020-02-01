@@ -60,6 +60,8 @@ namespace Microsoft.Tools.WindowsDevicePortal
 
             using (HttpClient client = new HttpClient(requestSettings))
             {
+                client.Timeout = TimeSpan.FromMilliseconds(-1);
+
                 this.ApplyHttpHeaders(client, HttpMethods.Post);
 
                 using (HttpResponseMessage response = await client.PostAsync(uri, requestContent).ConfigureAwait(false))
@@ -81,6 +83,10 @@ namespace Microsoft.Tools.WindowsDevicePortal
 
                             // Ensure we return with the stream pointed at the origin.
                             responseDataStream.Position = 0;
+                            if (responseDataStream.Length == 0)
+                            {
+                                responseDataStream = null;
+                            }
                         }
                     }
                 }
