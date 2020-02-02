@@ -42,6 +42,11 @@ namespace Microsoft.Tools.WindowsDevicePortal
             await this.PostAsync(UploadMapFileApi, files);
         }
 
+        /// <summary>
+        /// Import a head tracking map file to the HoloLens
+        /// </summary>
+        /// <param name="filename">Name of the tracking map file to import</param>
+        /// <returns></returns>
         public async Task ImportMapManagerFileAsync(string filename)
         {
             try

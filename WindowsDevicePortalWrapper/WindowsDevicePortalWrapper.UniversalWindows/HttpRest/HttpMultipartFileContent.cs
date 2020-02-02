@@ -91,7 +91,7 @@ namespace Microsoft.Tools.WindowsDevicePortal
         /// <summary>
         /// Adds a file to the list of items to transfer
         /// </summary>
-        /// <param name="filename">The name of the file to add</param>
+        /// <param name="storageFile">File to add</param>
         public async Task Add(StorageFile storageFile)
         {
             var properties = await storageFile.GetBasicPropertiesAsync();
@@ -124,7 +124,7 @@ namespace Microsoft.Tools.WindowsDevicePortal
         /// <summary>
         /// Adds a range of files to the list of items to transfer
         /// </summary>
-        /// <param name="filenames">List of files to add</param>
+        /// <param name="storageFiles">List of storage files to add</param>
         public async Task AddRange(IEnumerable<StorageFile> storageFiles)
         {
             if (storageFiles != null)
@@ -215,7 +215,8 @@ namespace Microsoft.Tools.WindowsDevicePortal
         /// <summary>
         /// Gets the file header for the transfer
         /// </summary>
-        /// <param name="info">Information about the file</param>
+        /// <param name="fileName">Name of the file</param>
+        /// <param name="fileType">Type of the file</param>
         /// <returns>A byte array with the file header information</returns>
         private static byte[] GetFileHeader(string fileName, string fileType)
         {

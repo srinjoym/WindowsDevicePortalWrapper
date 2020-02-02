@@ -62,6 +62,7 @@ namespace Microsoft.Tools.WindowsDevicePortal
         /// Stops the specified application from running.
         /// </summary>
         /// <param name="packageName">The name of the application package.</param>
+        /// <param name="forceStop">Force Stop the process</param>
         /// <returns>
         /// Task for tracking termination completion
         /// </returns>

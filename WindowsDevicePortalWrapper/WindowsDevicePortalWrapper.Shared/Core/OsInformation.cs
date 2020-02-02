@@ -242,10 +242,6 @@ namespace Microsoft.Tools.WindowsDevicePortal
                             case "HoloLens 2":
                                 return DevicePortalPlatforms.HoloLens2;
 
-                            case "HoloLens 2":
-                                platform = DevicePortalPlatforms.HoloLens;
-                                break;
-
                             default:
                                 return (DevicePortalPlatforms)Enum.Parse(typeof(DevicePortalPlatforms), this.PlatformName);
                         }

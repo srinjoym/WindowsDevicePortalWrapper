@@ -32,7 +32,6 @@ namespace Microsoft.Tools.WindowsDevicePortal
     /// <summary>
     /// HTTP Websocket Wrapper
     /// </summary>
-    /// <typeparam name="T">Return type for the websocket messages.</typeparam>
     internal partial class WebSocket<T>
     {
         /// <summary>
@@ -41,7 +40,7 @@ namespace Microsoft.Tools.WindowsDevicePortal
         private IDevicePortalConnection deviceConnection;
 
         /// <summary>
-        /// Indicates whether the web socket should send streams instead of parsed <see cref="T" /> objects
+        /// Indicates whether the web socket should send streams instead of parsed <see typeparamref="T" /> objects
         /// </summary>
         private bool sendStreams = false;
 
@@ -136,7 +135,7 @@ namespace Microsoft.Tools.WindowsDevicePortal
         }
 
         /// <summary>
-        /// Converts received stream to a parsed <see cref="T" /> object and passes it to
+        /// Converts received stream to a parsed <see typeparamref="T" /> object and passes it to
         /// the WebSocketMessageReceived handler. The sendstreams property can be used to
         /// override this and send the <see cref="Stream" /> instead via the WebSocketStreamReceived handler.
         /// </summary>

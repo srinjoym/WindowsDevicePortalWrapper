@@ -118,7 +118,7 @@ namespace Microsoft.Tools.WindowsDevicePortal
         /// Uploads a file to a Known Folder (e.g. LocalAppData)
         /// </summary>
         /// <param name="knownFolderId">The known folder id for the root of the path.</param>
-        /// <param name="filepath">The path to the file we are uploading.</param>
+        /// <param name="storageFile">StorageFile for the file we are uploading.</param>
         /// <param name="subPath">An optional subpath to the folder.</param>
         /// <param name="packageFullName">The package full name if using LocalAppData.</param>
         /// <returns>Task tracking completion of the upload request.</returns>
