@@ -10,7 +10,6 @@ using System.IO;
 using System.Net;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
-using Windows.Storage;
 
 namespace Microsoft.Tools.WindowsDevicePortal
 {
@@ -28,19 +27,6 @@ namespace Microsoft.Tools.WindowsDevicePortal
         /// API to upload a map
         /// </summary>
         public static readonly string ImportdMapFileApi = "api/holographic/mapmanager/import";
-
-        /// <summary>
-        /// Uploads a map or anchor file to the map manager
-        /// </summary>
-        /// <param name="storageFile">File we are uploading.</param>
-        /// <returns>Task tracking completion of the upload request.</returns>
-        public async Task UploadMapManagerFileAsync(StorageFile storageFile)
-        {
-            List<StorageFile> files = new List<StorageFile>();
-            files.Add(storageFile);
-
-            await this.PostAsync(UploadMapFileApi, files);
-        }
 
         /// <summary>
         /// Import a head tracking map file to the HoloLens

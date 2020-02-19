@@ -55,8 +55,10 @@
   <ItemGroup>
     <Compile Include="CertificateHandling.cs" />
     <Compile Include="Core\AppDeployment.cs" />
+    <Compile Include="Core\AppFileExplorer.cs" />
     <Compile Include="DefaultDevicePortalConnection.cs" />
     <Compile Include="Events\UnvalidatedCert.cs" />
+    <Compile Include="HoloLens\HolographicMapManager.cs" />
     <Compile Include="HttpRest\HttpMultipartFileContent.cs" />
     <Compile Include="HttpRest\RestPost.cs" />
     <Compile Include="HttpRest\RestPut.cs" />

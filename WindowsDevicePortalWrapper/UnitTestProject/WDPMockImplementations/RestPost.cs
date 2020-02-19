@@ -5,6 +5,7 @@
 //----------------------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -38,6 +39,30 @@ namespace Microsoft.Tools.WindowsDevicePortal
             }
 
             return this.PostAsync(uri, requestContent);
+        }
+
+        /// <summary>
+        /// Calls the specified API with the provided body. This signature leaves
+        /// off the optional response so callers who don't need a response body
+        /// don't need to specify a type for it.
+        /// </summary>
+        /// <param name="apiPath">The relative portion of the uri path that specifies the API to call.</param>
+        /// <param name="files">List of files that we want to include in the post request.</param>
+        /// <param name="payload">The query string portion of the uri path that provides the parameterized data.</param>
+        /// <returns>Task tracking the POST completion.</returns>
+        public async Task PostAsync(
+            string apiPath,
+            List<string> files,
+            string payload = null)
+        {
+            Uri uri = Utilities.BuildEndpoint(
+                this.deviceConnection.Connection,
+                apiPath,
+                payload);
+
+            var content = new HttpMultipartFileContent();
+            await content.AddRange(files);
+            await this.PostAsync(uri, content);
         }
 
         /// <summary>

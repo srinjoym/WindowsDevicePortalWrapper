@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 namespace Microsoft.Tools.WindowsDevicePortal
 {
     /// <summary>
-    /// This class mimicks <see cref="HttpMultipartContent"/>, with two main differences
+    /// This class mimicks HttpMultipartContent with two main differences
     /// 1. Simplifies posting files by taking file names instead of managing streams.
     /// 2. Does not quote the boundaries, due to a bug in the device portal
     /// </summary>
@@ -52,24 +52,32 @@ namespace Microsoft.Tools.WindowsDevicePortal
         /// Adds a file to the list of items to transfer
         /// </summary>
         /// <param name="filename">The name of the file to add</param>
-        public void Add(string filename)
+        /// <returns>Completed task - other implementations of this function need to do async things</returns>
+        public Task Add(string filename)
         {
             if (filename != null)
             {
                 this.items.Add(filename);
             }
+
+            // If we update to .net 4.6 we can use Task.CompletedTask
+            return Task.FromResult<object>(null);
         }
 
         /// <summary>
         /// Adds a range of files to the list of items to transfer
         /// </summary>
         /// <param name="filenames">List of files to add</param>
-        public void AddRange(IEnumerable<string> filenames)
+        /// <returns>Completed task - other implementations of this function need to do async things</returns>
+        public Task AddRange(IEnumerable<string> filenames)
         {
             if (filenames != null)
             {
                 this.items.AddRange(filenames);
             }
+
+            // If we update to .net 4.6 we can use Task.CompletedTask
+            return Task.FromResult<object>(null);
         }
 
         /// <summary>
