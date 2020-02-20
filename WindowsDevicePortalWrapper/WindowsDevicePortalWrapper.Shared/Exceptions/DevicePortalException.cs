@@ -10,12 +10,12 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 #endif // !WINDOWS_UWP
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Security;
 using System.Threading.Tasks;
 #if WINDOWS_UWP
+using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Storage.Streams;
 using Windows.Web.Http;

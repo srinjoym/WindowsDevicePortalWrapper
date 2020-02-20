@@ -60,7 +60,8 @@ namespace Microsoft.Tools.WindowsDevicePortal
         /// Device connection object.
         /// </summary>
         private IDevicePortalConnection deviceConnection;
-#if !WINDOWS_UWP
+#if !WINDOWS_UWP && !NET_STANDARD
+        // TODO: this code should be moved to the .net version
 
         // Enable/disable useUnsafeHeaderParsing.
         // See https://social.msdn.microsoft.com/Forums/en-US/ff098248-551c-4da9-8ba5-358a9f8ccc57/how-do-i-enable-useunsafeheaderparsing-from-code-net-20?forum=netfxnetcom

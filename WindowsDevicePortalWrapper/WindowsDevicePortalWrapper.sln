@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26403.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsDevicePortalWrapper", "WindowsDevicePortalWrapper\WindowsDevicePortalWrapper.csproj", "{6A9E862E-5CDA-4A8A-BBC0-56E9EA921E39}"
 EndProject
@@ -30,6 +30,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{
 		Utilities\signConfig.xml = Utilities\signConfig.xml
 		Utilities\WindowsDevicePortalWrapper.nuspec = Utilities\WindowsDevicePortalWrapper.nuspec
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsDevicePortalWrapper.NetStandard", "WindowsDevicePortalWrapper.NetStandard\WindowsDevicePortalWrapper.NetStandard.csproj", "{CE2306F1-EDA1-42B2-88BB-323CC698BB19}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -169,6 +171,22 @@ Global
 		{7E0481EB-514A-4292-AD1D-3A3EAF38D359}.Release|x64.Build.0 = Release|Any CPU
 		{7E0481EB-514A-4292-AD1D-3A3EAF38D359}.Release|x86.ActiveCfg = Release|Any CPU
 		{7E0481EB-514A-4292-AD1D-3A3EAF38D359}.Release|x86.Build.0 = Release|Any CPU
+		{CE2306F1-EDA1-42B2-88BB-323CC698BB19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE2306F1-EDA1-42B2-88BB-323CC698BB19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE2306F1-EDA1-42B2-88BB-323CC698BB19}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{CE2306F1-EDA1-42B2-88BB-323CC698BB19}.Debug|ARM.Build.0 = Debug|Any CPU
+		{CE2306F1-EDA1-42B2-88BB-323CC698BB19}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CE2306F1-EDA1-42B2-88BB-323CC698BB19}.Debug|x64.Build.0 = Debug|Any CPU
+		{CE2306F1-EDA1-42B2-88BB-323CC698BB19}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CE2306F1-EDA1-42B2-88BB-323CC698BB19}.Debug|x86.Build.0 = Debug|Any CPU
+		{CE2306F1-EDA1-42B2-88BB-323CC698BB19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE2306F1-EDA1-42B2-88BB-323CC698BB19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE2306F1-EDA1-42B2-88BB-323CC698BB19}.Release|ARM.ActiveCfg = Release|Any CPU
+		{CE2306F1-EDA1-42B2-88BB-323CC698BB19}.Release|ARM.Build.0 = Release|Any CPU
+		{CE2306F1-EDA1-42B2-88BB-323CC698BB19}.Release|x64.ActiveCfg = Release|Any CPU
+		{CE2306F1-EDA1-42B2-88BB-323CC698BB19}.Release|x64.Build.0 = Release|Any CPU
+		{CE2306F1-EDA1-42B2-88BB-323CC698BB19}.Release|x86.ActiveCfg = Release|Any CPU
+		{CE2306F1-EDA1-42B2-88BB-323CC698BB19}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -179,5 +197,8 @@ Global
 		{E605CD33-1B19-4091-9BD2-289D3CA4729E} = {07E3DB19-3DDB-42EF-BDAB-0A61F07D637C}
 		{1F3CA46B-1E52-418E-A293-23F3FA3BD213} = {07E3DB19-3DDB-42EF-BDAB-0A61F07D637C}
 		{7E0481EB-514A-4292-AD1D-3A3EAF38D359} = {07E3DB19-3DDB-42EF-BDAB-0A61F07D637C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {785D9236-3424-4BC4-8E90-D8793E84A108}
 	EndGlobalSection
 EndGlobal
