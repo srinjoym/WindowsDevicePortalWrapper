@@ -81,6 +81,17 @@ namespace Microsoft.Tools.WindowsDevicePortal
             X509Certificate2 certv2 = new X509Certificate2(certificate);
             bool isValid = chain.Build(certv2);
 
+            // Give the app a chance to override.
+            if (!isValid)
+            {
+                bool? overridenIsValid = this.UnvalidatedCert?.Invoke(this, certificate, chain, sslPolicyErrors);
+
+                if (overridenIsValid != null && overridenIsValid == true)
+                {
+                    isValid = true;
+                }
+            }
+
             // If chain validation failed but we have a manual cert, we can still
             // check the chain to see if the server cert chains up to our manual cert
             // (or matches it) in which case this is valid.
@@ -108,18 +119,6 @@ namespace Microsoft.Tools.WindowsDevicePortal
                         isValid = true;
                         break;
                     }
-                }
-            }
-
-            // If this still appears invalid, we give the app a chance via a handler
-            // to override the trust decision.
-            if (!isValid)
-            {
-                bool? overridenIsValid = this.UnvalidatedCert?.Invoke(this, certificate, chain, sslPolicyErrors);
-
-                if (overridenIsValid != null && overridenIsValid == true)
-                {
-                    isValid = true;
                 }
             }
 

@@ -75,7 +75,7 @@ namespace Microsoft.Tools.WindowsDevicePortal
         {
             bool isHoloLens = false;
 
-            if ((platform == DevicePortalPlatforms.HoloLens) ||
+            if ((platform == DevicePortalPlatforms.HoloLens) || (platform == DevicePortalPlatforms.HoloLens2) ||
                 ((platform == DevicePortalPlatforms.VirtualMachine) && (deviceFamily == "Windows.Holographic")))
             {
                 isHoloLens = true;
